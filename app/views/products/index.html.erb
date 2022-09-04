@@ -1,0 +1,29 @@
+<h1>一覧</h1>
+<p>
+  <%= link_to '新規作成', new_product_path %>
+</p>
+
+<% if @products.present? %>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>商品コード</th>
+      <th>商品名</th>
+      <th>商品価格</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.code %></td>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>商品がありません。</p>
+<% end %>

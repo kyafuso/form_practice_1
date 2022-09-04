@@ -1,0 +1,37 @@
+<p>
+  <%= link_to '一覧へ', products_path %>
+</p>
+
+
+<%= form_with(model: @form, url: products_path, local: true) do |fb| %>
+  <%= render 'shared/error_messages', object: fb.object %>
+  <table>
+    <thead>
+    <tr>
+      <th>登録</th>
+      <th>商品コード</th>
+      <th>商品名</th>
+      <th>販売価格</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%= fb.fields_for :products do |f| %>
+      <tr>
+        <td>
+          <%= f.check_box :availability %>
+        </td>
+        <td>
+          <%= f.text_field :code %>
+        </td>
+        <td>
+          <%= f.text_field :name %>
+        </td>
+        <td>
+          <%= f.text_field :price %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= fb.submit '一括登録' %>
+<%end%>
